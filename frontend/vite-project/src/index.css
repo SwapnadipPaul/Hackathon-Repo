@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* App-wide theme helpers */
+:root {
+  --app-bg: #0b1220;  
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  /* @apply bg-surface text-white antialiased; */
+  background-image: none; /* fallback value, replace with your own if needed */
+  background-size: 22px 22px;
+}
+
+.glass {
+  /* @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-glow; */
+}
+
+.brand-gradient {
+  background: linear-gradient(
+    135deg,
+    #3b82f6, /* fallback for brand.500 */
+    #1e40af  /* fallback for brand.700 */
+  );
+}
