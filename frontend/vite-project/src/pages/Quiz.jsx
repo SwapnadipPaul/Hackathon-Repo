@@ -1,5 +1,4 @@
 import { Card, Button, Progress } from 'flowbite-react'
-import { motion } from 'framer-motion'
 
 const sampleQuestion = {
   title: 'What is the capital of France?',
@@ -14,7 +13,7 @@ export default function Quiz() {
         <Progress progress={40} color="blue" size="lg" className="w-40" />
       </div>
 
-      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+      <div>
         <Card className="glass">
           <h2 className="text-xl font-medium text-white mb-2">{sampleQuestion.title}</h2>
           <div className="grid gap-3">
@@ -30,9 +29,10 @@ export default function Quiz() {
             <Button className="brand-gradient border-0">Next</Button>
           </div>
         </Card>
-      </motion.div>
+      </div>
     </div>
   )
 }
+
 
 

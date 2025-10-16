@@ -4,7 +4,7 @@
 
 /* App-wide theme helpers */
 :root {
-  --app-bg: #0b1220;  
+  --app-bg: #0b1220;
 }
 
 html, body, #root {
@@ -12,13 +12,19 @@ html, body, #root {
 }
 
 body {
-  /* @apply bg-surface text-white antialiased; */
-  background-image: none; /* fallback value, replace with your own if needed */
+  background-color: var(--app-bg);
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: none; /* optional pattern; keep none for solid bg */
   background-size: 22px 22px;
 }
 
 .glass {
-  /* @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-glow; */
+  /* Minimal fallback styles when Tailwind classes are unavailable */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .brand-gradient {
