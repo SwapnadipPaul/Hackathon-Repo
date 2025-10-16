@@ -5,6 +5,7 @@ import Layout from './components/Layout'
 // Lazy load components for better performance
 const Login = lazy(() => import('./pages/Login'))
 const StudentDashboard = lazy(() => import('./pages/StudentDashboard'))
+const TeacherDashboard = lazy(() => import('./pages/TeacherDashboard'))
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
           <Route index element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login />} />
           <Route path="/student" element={<StudentDashboard />} />
+          <Route path="/teacher" element={<TeacherDashboard />} />
         </Route>
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
