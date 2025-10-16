@@ -12,21 +12,13 @@ html, body, #root {
 }
 
 body {
-  /* Ensure visible contrast to avoid white-on-white blank look */
-  background-color: var(--app-bg);
-  color: #ffffff;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* @apply bg-surface text-white antialiased; */
   background-image: none; /* fallback value, replace with your own if needed */
   background-size: 22px 22px;
 }
 
 .glass {
-  /* Minimal glass effect without relying on Tailwind utilities */
-  background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 30px rgba(42, 157, 244, 0.15);
+  /* @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-glow; */
 }
 
 .brand-gradient {
