@@ -1,5 +1,4 @@
 import { Card, Button, Badge } from 'flowbite-react'
-import { motion } from 'framer-motion'
 
 const challenges = [
   { title: '30-min Math Sprint', difficulty: 'Easy' },
@@ -16,8 +15,8 @@ export default function Challenges() {
       </div>
 
       <div className="grid md:grid-cols-3 gap-4">
-        {challenges.map((c, i) => (
-          <motion.div key={c.title} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06 }}>
+        {challenges.map((c) => (
+          <div key={c.title}>
             <Card className="glass h-full">
               <div className="flex items-start justify-between">
                 <h3 className="text-white font-medium">{c.title}</h3>
@@ -29,7 +28,7 @@ export default function Challenges() {
                 <Button color="light" className="bg-white/10 border-white/10 text-white">Details</Button>
               </div>
             </Card>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

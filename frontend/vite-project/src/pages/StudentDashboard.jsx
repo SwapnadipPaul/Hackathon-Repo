@@ -1,5 +1,4 @@
 import { Card, Progress, Button } from 'flowbite-react'
-import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 const statCards = [
@@ -20,13 +19,13 @@ export default function StudentDashboard() {
       </div>
 
       <div className="grid sm:grid-cols-3 gap-4">
-        {statCards.map((s, i) => (
-          <motion.div key={s.label} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}>
+        {statCards.map((s) => (
+          <div key={s.label}>
             <Card className="glass">
               <p className="text-white/70 text-sm">{s.label}</p>
               <p className="text-2xl font-semibold text-white">{s.value}</p>
             </Card>
-          </motion.div>
+          </div>
         ))}
       </div>
 

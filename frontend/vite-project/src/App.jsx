@@ -1,4 +1,5 @@
 import { Suspense, lazy } from 'react'
+import 'flowbite'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { Spinner } from 'flowbite-react'
 import Layout from './components/Layout.jsx'

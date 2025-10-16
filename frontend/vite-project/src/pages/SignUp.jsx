@@ -1,11 +1,10 @@
 import { Card, TextInput, Label, Button, Checkbox, Select } from 'flowbite-react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
 
 export default function SignUp() {
   return (
     <div className="min-h-[80vh] grid place-items-center px-4">
-      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="w-full max-w-md">
+      <div className="w-full max-w-md">
         <Card className="glass">
           <div className="text-center space-y-2">
             <div className="mx-auto h-12 w-12 rounded-xl brand-gradient shadow-glow animate-float" />
@@ -42,9 +41,10 @@ export default function SignUp() {
 
           <p className="text-center text-white/70 text-sm">Already have an account? <Link to="/login" className="text-brand-400">Sign in</Link></p>
         </Card>
-      </motion.div>
+      </div>
     </div>
   )
 }
+
 
 

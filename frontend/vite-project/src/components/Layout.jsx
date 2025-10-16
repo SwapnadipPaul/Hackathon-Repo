@@ -1,5 +1,5 @@
 import { Outlet, NavLink, useLocation } from 'react-router-dom'
-import { Navbar, Button } from 'flowbite-react'
+import { Navbar, NavbarBrand, NavbarToggle, NavbarCollapse, Button } from 'flowbite-react'
 
 function BrandLogo() {
   return (
@@ -16,16 +16,16 @@ export default function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-surface">
       <Navbar fluid rounded className="glass sticky top-0 z-40">
-        <Navbar.Brand as={NavLink} to="/login">
+        <NavbarBrand as={NavLink} to="/login">
           <BrandLogo />
-        </Navbar.Brand>
+        </NavbarBrand>
         <div className="flex md:order-2 gap-2">
           <Button as={NavLink} to="/login" color="blue" className="brand-gradient border-0">
             Login
           </Button>
-          <Navbar.Toggle />
+          <NavbarToggle />
         </div>
-        <Navbar.Collapse>
+        <NavbarCollapse>
           <NavLink to="/student" className={({ isActive }) => isActive ? 'text-brand-400' : 'text-white/80'}>
             Student
           </NavLink>
@@ -38,7 +38,7 @@ export default function Layout() {
           <NavLink to="/challenges" className={({ isActive }) => isActive ? 'text-brand-400' : 'text-white/80'}>
             Challenges
           </NavLink>
-        </Navbar.Collapse>
+        </NavbarCollapse>
       </Navbar>
 
       <main className="flex-1">
@@ -54,5 +54,6 @@ export default function Layout() {
     </div>
   )
 }
+
 
 
