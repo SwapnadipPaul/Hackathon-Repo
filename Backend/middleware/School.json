@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Greenfield High School",
+    "district": "Bangalore Urban",
+    "state": "Karnataka",
+    "classes": [
+      { "name": "6", "sections": [{"name": "A"}, {"name": "B"}] },
+      { "name": "7", "sections": [{"name": "A"}, {"name": "B"}] },
+      { "name": "8", "sections": [{"name": "A"}, {"name": "B"}] },
+      { "name": "9", "sections": [{"name": "A"}, {"name": "B"}] },
+      { "name": "10", "sections": [{"name": "A"}, {"name": "B"}] }
+    ],
+    "totalEcoPoints": 0
+  },
+  {
+    "name": "Sunrise Public School",
+    "district": "Mysore",
+    "state": "Karnataka",
+    "classes": [
+      { "name": "6", "sections": [{"name": "A"}, {"name": "B"}] },
+      { "name": "7", "sections": [{"name": "A"}, {"name": "B"}] },
+      { "name": "8", "sections": [{"name": "A"}, {"name": "B"}] },
+      { "name": "9", "sections": [{"name": "A"}, {"name": "B"}] },
+      { "name": "10", "sections": [{"name": "A"}, {"name": "B"}] }
+    ],
+    "totalEcoPoints": 0
+  },
+  {
+    "name": "Riverdale International School",
+    "district": "Hubli",
+    "state": "Karnataka",
+    "classes": [
+      { "name": "6", "sections": [{"name": "A"}, {"name": "B"}] },
+      { "name": "7", "sections": [{"name": "A"}, {"name": "B"}] },
+      { "name": "8", "sections": [{"name": "A"}, {"name": "B"}] },
+      { "name": "9", "sections": [{"name": "A"}, {"name": "B"}] },
+      { "name": "10", "sections": [{"name": "A"}, {"name": "B"}] }
+    ],
+    "totalEcoPoints": 0
+  }
+]

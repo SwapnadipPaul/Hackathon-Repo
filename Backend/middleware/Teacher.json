@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Ravi Sharma",
+    "email": "ravi.sharma@example.com",
+    "password": "pass123",
+    "school": "SCHOOL_ID_1",
+    "classes": [{"className": "8", "sectionName": "A"}],
+    "students": [],
+    "reports": []
+  },
+  {
+    "name": "Priya Kapoor",
+    "email": "priya.kapoor@example.com",
+    "password": "pass123",
+    "school": "SCHOOL_ID_1",
+    "classes": [{"className": "8", "sectionName": "B"}, {"className": "9", "sectionName": "A"}],
+    "students": [],
+    "reports": []
+  },
+  {
+    "name": "Vikram Singh",
+    "email": "vikram.singh@example.com",
+    "password": "pass123",
+    "school": "SCHOOL_ID_2",
+    "classes": [{"className": "7", "sectionName": "A"}],
+    "students": [],
+    "reports": []
+  },
+  {
+    "name": "Anjali Mehta",
+    "email": "anjali.mehta@example.com",
+    "password": "pass123",
+    "school": "SCHOOL_ID_2",
+    "classes": [{"className": "7", "sectionName": "B"}, {"className": "8", "sectionName": "A"}],
+    "students": [],
+    "reports": []
+  },
+  {
+    "name": "Suresh Iyer",
+    "email": "suresh.iyer@example.com",
+    "password": "pass123",
+    "school": "SCHOOL_ID_3",
+    "classes": [{"className": "9", "sectionName": "B"}],
+    "students": [],
+    "reports": []
+  },
+  {
+    "name": "Neha Gupta",
+    "email": "neha.gupta@example.com",
+    "password": "pass123",
+    "school": "SCHOOL_ID_3",
+    "classes": [{"className": "10", "sectionName": "A"}],
+    "students": [],
+    "reports": []
+  },
+  {
+    "name": "Rohit Desai",
+    "email": "rohit.desai@example.com",
+    "password": "pass123",
+    "school": "SCHOOL_ID_1",
+    "classes": [{"className": "6", "sectionName": "A"}],
+    "students": [],
+    "reports": []
+  },
+  {
+    "name": "Shreya Nair",
+    "email": "shreya.nair@example.com",
+    "password": "pass123",
+    "school": "SCHOOL_ID_2",
+    "classes": [{"className": "6", "sectionName": "B"}],
+    "students": [],
+    "reports": []
+  },
+  {
+    "name": "Amit Bansal",
+    "email": "amit.bansal@example.com",
+    "password": "pass123",
+    "school": "SCHOOL_ID_3",
+    "classes": [{"className": "10", "sectionName": "B"}],
+    "students": [],
+    "reports": []
+  },
+  {
+    "name": "Tanya Roy",
+    "email": "tanya.roy@example.com",
+    "password": "pass123",
+    "school": "SCHOOL_ID_1",
+    "classes": [{"className": "9", "sectionName": "A"}],
+    "students": [],
+    "reports": []
+  }
+]
