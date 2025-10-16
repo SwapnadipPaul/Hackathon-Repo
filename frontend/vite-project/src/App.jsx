@@ -10,6 +10,8 @@ const StudentDashboard = lazy(() => import('./pages/StudentDashboard.jsx'))
 const TeacherDashboard = lazy(() => import('./pages/TeacherDashboard.jsx'))
 const Quiz = lazy(() => import('./pages/Quiz.jsx'))
 const Challenges = lazy(() => import('./pages/Challenges.jsx'))
+const Leaderboard = lazy(() => import('./pages/Leaderboard.jsx'))
+const RealworldProjects = lazy(() => import('./pages/RealworldProjects.jsx'))
 
 function App() {
   return (
@@ -27,8 +29,10 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/student" element={<StudentDashboard />} />
           <Route path="/teacher" element={<TeacherDashboard />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/challenges" element={<Challenges />} />
+          <Route path="/projects" element={<RealworldProjects />} />
         </Route>
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>

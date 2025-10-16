@@ -32,11 +32,17 @@ export default function Layout() {
           <NavLink to="/teacher" className={({ isActive }) => isActive ? 'text-brand-400' : 'text-white/80'}>
             Teacher
           </NavLink>
+          <NavLink to="/leaderboard" className={({ isActive }) => isActive ? 'text-brand-400' : 'text-white/80'}>
+            Leaderboard
+          </NavLink>
           <NavLink to="/quiz" className={({ isActive }) => isActive ? 'text-brand-400' : 'text-white/80'}>
             Quiz
           </NavLink>
           <NavLink to="/challenges" className={({ isActive }) => isActive ? 'text-brand-400' : 'text-white/80'}>
             Challenges
+          </NavLink>
+          <NavLink to="/projects" className={({ isActive }) => isActive ? 'text-brand-400' : 'text-white/80'}>
+            Real World Projects
           </NavLink>
         </NavbarCollapse>
       </Navbar>
