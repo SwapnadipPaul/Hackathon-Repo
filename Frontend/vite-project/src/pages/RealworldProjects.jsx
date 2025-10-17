@@ -725,8 +725,8 @@ export default function RealworldProjects() {
                 className="flex-1"
               >
                 {joinedProjects.includes(selectedProject.id)
-                  ? "Joined ✅"
-                  : "Join Project"}
+                  ? "Submitted ✅"
+                  : "Submit Project"}
               </CapsuleButton>
               <CapsuleButton
                 variant="outline"

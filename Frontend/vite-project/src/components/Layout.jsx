@@ -5,6 +5,7 @@ import {
   NavbarToggle,
   NavbarCollapse,
 } from "flowbite-react";
+import { useAuth } from "../contexts/AuthContext";
 import CapsuleButton from "./CapsuleButton";
 
 function BrandLogo() {
@@ -32,82 +33,97 @@ function BrandLogo() {
 
 export default function Layout() {
   const location = useLocation();
+  const { isAuthenticated, user, logout } = useAuth();
 
   return (
     <div className="min-h-screen flex flex-col bg-surface">
       <Navbar fluid rounded className="glass sticky top-0 z-40">
-        <NavbarBrand as={NavLink} to="/login">
+        <NavbarBrand>
           <BrandLogo />
         </NavbarBrand>
         <div className="flex md:order-2 gap-2">
-          <CapsuleButton
-            as={NavLink}
-            to="/login"
-            variant="primary"
-            size="sm"
-            promptMessage="Going to Login! 🔐"
-          >
-            Login
-          </CapsuleButton>
+          {isAuthenticated ? (
+            <div className="flex items-center gap-2">
+              <span className="text-white text-sm">Welcome, {user?.name}!</span>
+              <CapsuleButton
+                onClick={logout}
+                variant="outline"
+                size="sm"
+                promptMessage="Logging Out! 👋"
+              >
+                Logout
+              </CapsuleButton>
+            </div>
+          ) : (
+            <CapsuleButton
+              as={NavLink}
+              to="/login"
+              variant="primary"
+              size="sm"
+              promptMessage="Going to Login! 🔐"
+            >
+              Login
+            </CapsuleButton>
+          )}
           <NavbarToggle />
         </div>
         <NavbarCollapse>
-          <NavLink
-            to="/student"
-            className={({ isActive }) =>
-              isActive ? "text-brand-400" : "text-white/80"
-            }
-          >
-            Student
-          </NavLink>
-          <NavLink
-            to="/teacher"
-            className={({ isActive }) =>
-              isActive ? "text-brand-400" : "text-white/80"
-            }
-          >
-            Teacher
-          </NavLink>
-          <NavLink
-            to="/leaderboard"
-            className={({ isActive }) =>
-              isActive ? "text-brand-400" : "text-white/80"
-            }
-          >
-            Leaderboard
-          </NavLink>
-          <NavLink
-            to="/quiz"
-            className={({ isActive }) =>
-              isActive ? "text-brand-400" : "text-white/80"
-            }
-          >
-            Quiz
-          </NavLink>
-          <NavLink
-            to="/lessons"
-            className={({ isActive }) =>
-              isActive ? "text-brand-400" : "text-white/80"
-            }
-          >
-            Lessons
-          </NavLink>
-          <NavLink
-            to="/challenges"
-            className={({ isActive }) =>
-              isActive ? "text-brand-400" : "text-white/80"
-            }
-          >
-            Challenges
-          </NavLink>
-          <NavLink
-            to="/projects"
-            className={({ isActive }) =>
-              isActive ? "text-brand-400" : "text-white/80"
-            }
-          >
-            Projects
-          </NavLink>
+          {isAuthenticated ? (
+            <>
+              <NavLink
+                to={user?.role === "teacher" ? "/teacher" : "/student"}
+                className={({ isActive }) =>
+                  isActive ? "text-brand-400" : "text-white/80"
+                }
+              >
+                Dashboard
+              </NavLink>
+              <NavLink
+                to="/leaderboard"
+                className={({ isActive }) =>
+                  isActive ? "text-brand-400" : "text-white/80"
+                }
+              >
+                Leaderboard
+              </NavLink>
+              <NavLink
+                to="/quiz"
+                className={({ isActive }) =>
+                  isActive ? "text-brand-400" : "text-white/80"
+                }
+              >
+                Quiz
+              </NavLink>
+              <NavLink
+                to="/lessons"
+                className={({ isActive }) =>
+                  isActive ? "text-brand-400" : "text-white/80"
+                }
+              >
+                Lessons
+              </NavLink>
+              <NavLink
+                to="/challenges"
+                className={({ isActive }) =>
+                  isActive ? "text-brand-400" : "text-white/80"
+                }
+              >
+                Challenges
+              </NavLink>
+              <NavLink
+                to="/projects"
+                className={({ isActive }) =>
+                  isActive ? "text-brand-400" : "text-white/80"
+                }
+              >
+                Projects
+              </NavLink>
+            </>
+          ) : (
+            <div className="text-white/60 text-sm">
+              Please login to access all features
+            </div>
+          )}
         </NavbarCollapse>
       </Navbar>
 

@@ -702,9 +702,21 @@ export default function TeacherDashboard() {
                     Question Type
                   </label>
                   <select className="w-full p-4 rounded-xl bg-white/5 border border-white/20 text-white focus:border-green-400 focus:bg-white/10 transition-all duration-300 font-body">
-                    <option>Multiple Choice</option>
-                    <option>True/False</option>
-                    <option>Mixed</option>
+                    <option
+                      value="multiple"
+                      className="bg-slate-800 text-white"
+                    >
+                      Multiple Choice
+                    </option>
+                    <option
+                      value="truefalse"
+                      className="bg-slate-800 text-white"
+                    >
+                      True/False
+                    </option>
+                    <option value="mixed" className="bg-slate-800 text-white">
+                      Mixed
+                    </option>
                   </select>
                 </div>
                 <div>
@@ -792,9 +804,15 @@ export default function TeacherDashboard() {
                     Difficulty
                   </label>
                   <select className="w-full p-4 rounded-xl bg-white/5 border border-white/20 text-white focus:border-green-400 focus:bg-white/10 transition-all duration-300 font-body">
-                    <option>Easy</option>
-                    <option>Medium</option>
-                    <option>Hard</option>
+                    <option value="easy" className="bg-slate-800 text-white">
+                      Easy
+                    </option>
+                    <option value="medium" className="bg-slate-800 text-white">
+                      Medium
+                    </option>
+                    <option value="hard" className="bg-slate-800 text-white">
+                      Hard
+                    </option>
                   </select>
                 </div>
                 <div>

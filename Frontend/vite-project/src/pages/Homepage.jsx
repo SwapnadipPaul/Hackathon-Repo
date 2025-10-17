@@ -153,7 +153,9 @@ export default function Homepage() {
               <CapsuleButton
                 variant="outline"
                 size="lg"
-                onClick={() => navigate("/lessons")}
+                onClick={() =>
+                  navigate(isAuthenticated ? "/lessons" : "/login")
+                }
                 promptMessage="Explore Interactive Lessons"
               >
                 Explore Lessons

@@ -34,7 +34,7 @@ export default function InteractiveLessons() {
 • Reduce plastic and waste
 • Use renewable energy like solar and wind`,
       youtube: "https://www.youtube.com/embed/EtW2rrLHs08",
-      duration: "15 minutes",
+      duration: "4 minutes 10 secs",
       difficulty: "Beginner",
       points: 14.28,
       icon: "🌍",
@@ -100,7 +100,7 @@ export default function InteractiveLessons() {
    • Use natural resources like wood, water, and fish responsibly
    • Avoid overhunting and overfishing`,
       youtube: "https://www.youtube.com/embed/GK_vRtHJZu4",
-      duration: "18 minutes",
+      duration: "12 minutes",
       difficulty: "Intermediate",
       points: 14.28,
       icon: "🦋",
@@ -131,7 +131,7 @@ Instead of using electricity from coal-based power plants, a family installs sol
 3. Conserves natural resources like coal and oil
 4. Supports a cleaner and healthier environment for the future`,
       youtube: "https://www.youtube.com/embed/PBkmOhOk8nk",
-      duration: "20 minutes",
+      duration: "4 minutes",
       difficulty: "Intermediate",
       points: 14.28,
       icon: "🌱",
@@ -177,8 +177,8 @@ Instead of using electricity from coal-based power plants, a family installs sol
    • Provides recreational areas in parks, schools, and cities
    • Reduces urban heat and pollution, making cities healthier`,
       youtube: "https://www.youtube.com/embed/-k6j8lqQgTk",
-      duration: "16 minutes",
-      difficulty: "Beginner",
+      duration: "1 hour 1 minute",
+      difficulty: "Hard",
       points: 14.28,
       icon: "🌳",
     },
@@ -221,7 +221,7 @@ Instead of using electricity from coal-based power plants, a family installs sol
    • Reduces air, water, and land pollution, which improves human and animal health
    • Example: Removing plastic waste from a river prevents contamination and fish deaths`,
       youtube: "https://www.youtube.com/embed/17HC3MMBwxY",
-      duration: "14 minutes",
+      duration: "3 minutes",
       difficulty: "Intermediate",
       points: 14.28,
       icon: "🗑️",

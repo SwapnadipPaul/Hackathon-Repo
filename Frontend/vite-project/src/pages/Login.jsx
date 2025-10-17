@@ -296,11 +296,10 @@ export default function Login() {
               </h3>
               <div className="text-sm text-white/70 font-body space-y-1">
                 <div>
-                  <strong>Student:</strong> anaya.r@example.com / password123
+                  <strong>Student:</strong> anaya.r@example.com / pass123
                 </div>
                 <div>
-                  <strong>Teacher:</strong> ravi.sharma@example.com /
-                  password123
+                  <strong>Teacher:</strong> ravi.sharma@example.com / pass123
                 </div>
               </div>
             </div>
