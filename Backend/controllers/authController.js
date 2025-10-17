@@ -59,16 +59,21 @@ export async function registerTeacher(req, res) {
 
 export async function login(req, res) {
   try {
+    console.log('Login request body:', req.body);
     const { email, password, role } = req.body; // role: 'student' | 'teacher'
     if (!email || !password || !role) return res.status(400).json({ error: 'Missing fields' });
     const Model = role === 'teacher' ? Teacher : Student;
+    console.log('Looking for user with email:', email, 'in model:', Model.modelName);
     const user = await Model.findOne({ email });
+    console.log('User found:', user ? 'Yes' : 'No');
     if (!user) return res.status(400).json({ error: 'Invalid credentials' });
     const ok = await bcrypt.compare(password, user.password);
+    console.log('Password match:', ok);
     if (!ok) return res.status(400).json({ error: 'Invalid credentials' });
     const token = signToken(user, role);
     res.json({ token, user: { id: user._id, name: user.name, role } });
   } catch (e) {
+    console.error('Login error:', e);
     res.status(500).json({ error: 'Server error' });
   }
 }

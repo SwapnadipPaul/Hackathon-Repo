@@ -1,17 +1,37 @@
-import { Outlet, NavLink, useLocation } from 'react-router-dom'
-import { Navbar, NavbarBrand, NavbarToggle, NavbarCollapse, Button } from 'flowbite-react'
+import { Outlet, NavLink, useLocation, useNavigate } from "react-router-dom";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarToggle,
+  NavbarCollapse,
+} from "flowbite-react";
+import CapsuleButton from "./CapsuleButton";
 
 function BrandLogo() {
+  const navigate = useNavigate();
   return (
-    <div className="flex items-center gap-2">
-      <div className="h-8 w-8 rounded-lg brand-gradient shadow-glow animate-float" />
-      <span className="text-white font-semibold tracking-wide">SkillForge</span>
+    <div
+      className="flex items-center gap-2 cursor-pointer hover:scale-105 transition-transform duration-300"
+      onClick={() => navigate("/")}
+    >
+      <img
+        src="/src/pages/Assets/based-on-eco-learn-make-logo.jpg"
+        alt="Eco Learn Logo"
+        className="h-8 w-8 rounded-lg object-cover shadow-glow animate-float"
+        onError={(e) => {
+          e.target.src =
+            "https://via.placeholder.com/32x32/10b981/ffffff?text=EL";
+        }}
+      />
+      <span className="text-white font-semibold tracking-wide hover:text-green-400 transition-colors duration-300">
+        Eco Learn
+      </span>
     </div>
-  )
+  );
 }
 
 export default function Layout() {
-  const location = useLocation()
+  const location = useLocation();
 
   return (
     <div className="min-h-screen flex flex-col bg-surface">
@@ -20,23 +40,73 @@ export default function Layout() {
           <BrandLogo />
         </NavbarBrand>
         <div className="flex md:order-2 gap-2">
-          <Button as={NavLink} to="/login" color="blue" className="brand-gradient border-0">
+          <CapsuleButton
+            as={NavLink}
+            to="/login"
+            variant="primary"
+            size="sm"
+            promptMessage="Going to Login! 🔐"
+          >
             Login
-          </Button>
+          </CapsuleButton>
           <NavbarToggle />
         </div>
         <NavbarCollapse>
-          <NavLink to="/student" className={({ isActive }) => isActive ? 'text-brand-400' : 'text-white/80'}>
+          <NavLink
+            to="/student"
+            className={({ isActive }) =>
+              isActive ? "text-brand-400" : "text-white/80"
+            }
+          >
             Student
           </NavLink>
-          <NavLink to="/teacher" className={({ isActive }) => isActive ? 'text-brand-400' : 'text-white/80'}>
+          <NavLink
+            to="/teacher"
+            className={({ isActive }) =>
+              isActive ? "text-brand-400" : "text-white/80"
+            }
+          >
             Teacher
           </NavLink>
-          <NavLink to="/quiz" className={({ isActive }) => isActive ? 'text-brand-400' : 'text-white/80'}>
+          <NavLink
+            to="/leaderboard"
+            className={({ isActive }) =>
+              isActive ? "text-brand-400" : "text-white/80"
+            }
+          >
+            Leaderboard
+          </NavLink>
+          <NavLink
+            to="/quiz"
+            className={({ isActive }) =>
+              isActive ? "text-brand-400" : "text-white/80"
+            }
+          >
             Quiz
           </NavLink>
-          <NavLink to="/challenges" className={({ isActive }) => isActive ? 'text-brand-400' : 'text-white/80'}>
+          <NavLink
+            to="/lessons"
+            className={({ isActive }) =>
+              isActive ? "text-brand-400" : "text-white/80"
+            }
+          >
+            Lessons
+          </NavLink>
+          <NavLink
+            to="/challenges"
+            className={({ isActive }) =>
+              isActive ? "text-brand-400" : "text-white/80"
+            }
+          >
             Challenges
+          </NavLink>
+          <NavLink
+            to="/projects"
+            className={({ isActive }) =>
+              isActive ? "text-brand-400" : "text-white/80"
+            }
+          >
+            Projects
           </NavLink>
         </NavbarCollapse>
       </Navbar>
@@ -47,13 +117,12 @@ export default function Layout() {
 
       <footer className="glass mt-12">
         <div className="mx-auto max-w-6xl px-4 py-6 text-white/60 text-sm flex items-center justify-between">
-          <span>© {new Date().getFullYear()} SkillForge</span>
-          <span className="hidden sm:block">Built with Tailwind + Flowbite</span>
+          <span>© {new Date().getFullYear()} Eco Learn</span>
+          <span className="hidden sm:block">
+            Empowering Environmental Education
+          </span>
         </div>
       </footer>
     </div>
-  )
+  );
 }
-
-
-
