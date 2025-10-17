@@ -74,6 +74,13 @@ export default function EcoGame() {
   const [waterScore, setWaterScore] = useState(0);
   const [lives, setLives] = useState(5);
   const [gameActive, setGameActive] = useState(false);
+  const [truckPosition, setTruckPosition] = useState(50);
+  const [truckDirection, setTruckDirection] = useState(1);
+  const [plants, setPlants] = useState([
+    { id: 1, x: 20, watered: false },
+    { id: 2, x: 60, watered: false },
+    { id: 3, x: 100, watered: false },
+  ]);
 
   // Trivia Game Functions
   const startTriviaGame = () => {
@@ -147,6 +154,13 @@ export default function EcoGame() {
     setWaterDrops([]);
     setWaterScore(0);
     setLives(5);
+    setTruckPosition(50);
+    setTruckDirection(1);
+    setPlants([
+      { id: 1, x: 20, watered: false },
+      { id: 2, x: 60, watered: false },
+      { id: 3, x: 100, watered: false },
+    ]);
   };
 
   const dropWater = () => {
@@ -164,31 +178,97 @@ export default function EcoGame() {
     setWaterDrops((prev) => [...prev, newDrop]);
   };
 
-  // Simple water drop animation
+  // Check collision between water drop and plants
+  const checkCollision = (drop) => {
+    const truckLeft = truckPosition;
+    const truckRight = truckPosition + 128; // 128px width
+
+    if (
+      drop.x >= truckLeft &&
+      drop.x <= truckRight &&
+      drop.y >= 340 &&
+      drop.y <= 380
+    ) {
+      // Water drop hit truck area
+      let hitPlant = false;
+
+      setPlants((prevPlants) => {
+        return prevPlants.map((plant) => {
+          const plantX = truckLeft + plant.x;
+          if (
+            drop.x >= plantX - 10 &&
+            drop.x <= plantX + 10 &&
+            !plant.watered
+          ) {
+            hitPlant = true;
+            return { ...plant, watered: true };
+          }
+          return plant;
+        });
+      });
+
+      if (hitPlant) {
+        setWaterScore((prev) => prev + 1);
+        return true; // Hit a plant
+      } else {
+        // Hit truck but not a plant - waste water
+        setLives((prev) => {
+          const newLives = prev - 1;
+          if (newLives <= 0) {
+            setGameActive(false);
+          }
+          return newLives;
+        });
+        return true; // Hit truck
+      }
+    }
+
+    // Water hit ground - waste water
+    if (drop.y >= 380) {
+      setLives((prev) => {
+        const newLives = prev - 1;
+        if (newLives <= 0) {
+          setGameActive(false);
+        }
+        return newLives;
+      });
+      return true; // Hit ground
+    }
+
+    return false; // No collision yet
+  };
+
+  // Game animation loop
   useEffect(() => {
     if (!gameActive) return;
 
     const interval = setInterval(() => {
+      // Move truck
+      setTruckPosition((prev) => {
+        const newPos = prev + truckDirection * 1;
+        if (newPos <= 0 || newPos >= 270) {
+          setTruckDirection((prevDir) => -prevDir);
+          return Math.max(0, Math.min(270, newPos));
+        }
+        return newPos;
+      });
+
+      // Move water drops and check collisions
       setWaterDrops((prev) => {
-        const updated = prev
+        return prev
           .map((drop) => ({
             ...drop,
             y: drop.y + drop.speed,
           }))
-          .filter((drop) => drop.y < 400);
-
-        // Check for scoring (simple version)
-        const scored = prev.filter((drop) => drop.y >= 350 && drop.y < 400);
-        if (scored.length > 0) {
-          setWaterScore((prev) => prev + scored.length);
-        }
-
-        return updated;
+          .filter((drop) => {
+            if (drop.y >= 400) return false; // Remove if off screen
+            return !checkCollision(drop); // Remove if hit something
+          });
       });
     }, 50);
 
     return () => clearInterval(interval);
-  }, [gameActive]);
+  }, [gameActive, truckDirection]);
 
   const resetGame = () => {
     setGameType(null);
@@ -485,30 +565,42 @@ export default function EcoGame() {
               ></div>
             ))}
 
-            {/* Simple Plant Target */}
+            {/* Moving Truck with Plants */}
             <div
               className="absolute w-32 h-8 bg-orange-500 rounded-lg"
-              style={{ left: 50, top: 350 }}
+              style={{ left: truckPosition, top: 350 }}
             >
-              <div
-                className="absolute w-6 h-6 rounded-full bg-yellow-600 flex items-center justify-center text-xs"
-                style={{ left: 20, top: -4 }}
-              >
-                🪴
-              </div>
-              <div
-                className="absolute w-6 h-6 rounded-full bg-yellow-600 flex items-center justify-center text-xs"
-                style={{ left: 60, top: -4 }}
-              >
-                🪴
-              </div>
-              <div
-                className="absolute w-6 h-6 rounded-full bg-yellow-600 flex items-center justify-center text-xs"
-                style={{ left: 100, top: -4 }}
-              >
-                🪴
-              </div>
+              {plants.map((plant) => (
+                <div
+                  key={plant.id}
+                  className={`absolute w-6 h-6 rounded-full flex items-center justify-center text-xs ${
+                    plant.watered ? "bg-green-400" : "bg-yellow-600"
+                  }`}
+                  style={{ left: plant.x, top: -4 }}
+                >
+                  {plant.watered ? "🌱" : "🪴"}
+                </div>
+              ))}
             </div>
+
+            {/* Game Over Overlay */}
+            {!gameActive && lives <= 0 && (
+              <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                <div className="text-white text-2xl font-bold text-center">
+                  Game Over! 💔
+                  <div className="text-lg mt-2">Final Score: {waterScore}</div>
+                  <div className="mt-4">
+                    <CapsuleButton
+                      variant="primary"
+                      onClick={startWaterGame}
+                      promptMessage="Play Again! 🔄"
+                    >
+                      Play Again
+                    </CapsuleButton>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Instructions */}
             <div className="absolute bottom-4 left-4 right-4 text-center">
@@ -518,7 +610,10 @@ export default function EcoGame() {
 
           <div className="mt-4 text-center text-white/80 text-sm">
             <p>Click anywhere in the blue area to drop water!</p>
-            <p>Try to hit the plant pots to score points!</p>
+            <p>Hit the plant pots (🪴) to score points!</p>
+            <p className="text-red-400">
+              Missing wastes water and costs lives!
+            </p>
           </div>
         </div>
 
