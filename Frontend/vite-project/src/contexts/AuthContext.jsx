@@ -50,20 +50,16 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password, role) => {
     try {
-      // For demo purposes, allow login with demo credentials
-      if (
-        (email === "anaya.r@example.com" &&
-          password === "pass123" &&
-          role === "student") ||
-        (email === "ravi.sharma@example.com" &&
-          password === "pass123" &&
-          role === "teacher")
-      ) {
+      // For demo purposes, allow login with any email and password "pass123"
+      if (password === "pass123") {
         const demoToken = `demo-token-${Date.now()}`;
         const userData = {
           email: email,
           role: role,
-          name: email === "anaya.r@example.com" ? "Anaya R" : "Ravi Sharma",
+          name: email
+            .split("@")[0]
+            .replace(/[._]/g, " ")
+            .replace(/\b\w/g, (l) => l.toUpperCase()), // Convert email to name
         };
 
         setToken(demoToken);
@@ -86,6 +82,24 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("user", JSON.stringify(userData));
       return result;
     } catch (error) {
+      // If API fails, still allow demo login with pass123
+      if (password === "pass123") {
+        const demoToken = `demo-token-${Date.now()}`;
+        const userData = {
+          email: email,
+          role: role,
+          name: email
+            .split("@")[0]
+            .replace(/[._]/g, " ")
+            .replace(/\b\w/g, (l) => l.toUpperCase()),
+        };
+
+        setToken(demoToken);
+        setUser(userData);
+        localStorage.setItem("token", demoToken);
+        localStorage.setItem("user", JSON.stringify(userData));
+        return { token: demoToken, user: userData };
+      }
       throw error;
     }
   };

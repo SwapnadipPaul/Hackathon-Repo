@@ -296,10 +296,11 @@ export default function Login() {
               </h3>
               <div className="text-sm text-white/70 font-body space-y-1">
                 <div>
-                  <strong>Student:</strong> anaya.r@example.com / pass123
+                  <strong>Any email</strong> with password:{" "}
+                  <strong>pass123</strong>
                 </div>
-                <div>
-                  <strong>Teacher:</strong> ravi.sharma@example.com / pass123
+                <div className="text-xs text-white/50 mt-2">
+                  Examples: your.email@example.com, student@demo.com, etc.
                 </div>
               </div>
             </div>

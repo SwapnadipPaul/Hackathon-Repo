@@ -18,6 +18,7 @@ const Challenges = lazy(() => import("./pages/Challenges.jsx"));
 const InteractiveLessons = lazy(() => import("./pages/Interactivelessons.jsx"));
 const RealworldProjects = lazy(() => import("./pages/RealworldProjects.jsx"));
 const Leaderboard = lazy(() => import("./pages/Leaderboard.jsx"));
+const EcoGame = lazy(() => import("./pages/EcoGame.jsx"));
 
 function App() {
   return (
@@ -93,6 +94,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <RealworldProjects />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/game"
+                element={
+                  <ProtectedRoute>
+                    <EcoGame />
                   </ProtectedRoute>
                 }
               />

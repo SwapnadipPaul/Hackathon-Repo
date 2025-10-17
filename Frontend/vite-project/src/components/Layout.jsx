@@ -118,6 +118,14 @@ export default function Layout() {
               >
                 Projects
               </NavLink>
+              <NavLink
+                to="/game"
+                className={({ isActive }) =>
+                  isActive ? "text-brand-400" : "text-white/80"
+                }
+              >
+                🎮 Game
+              </NavLink>
             </>
           ) : (
             <div className="text-white/60 text-sm">
